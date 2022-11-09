@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -54,19 +56,14 @@
       </div>
     </nav>
 
-    <main class="container">
+    <div class="main container">
       <!-- Render the sub layout -->
      {{{  body }}}
-    </main>
-    <footer>
-      FOOTER
-    </footer>
-  </div>
-
+    </div>
+   
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
 </body>
-
 </html>
