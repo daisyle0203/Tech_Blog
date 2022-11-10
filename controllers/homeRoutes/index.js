@@ -1,7 +1,7 @@
 // This contains all of the user-facing routes, such as the homepage, login and signup page
 const router = require('express').Router();
 const sequelize = require('../../config/connection')
-const { Post, User } = require('../../models');
+const { Post, User, Comment } = require('../../models');
 
 // rendering all posts on homepage
 router.get("/", async (req, res) => {
@@ -15,17 +15,17 @@ router.get("/", async (req, res) => {
         'created_at'
       ],
       include: [
-        // {
-        //   model: Comment,
-        //   attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-        //   include: {
-        //     model: User,
-        //     attributes: ['username']
-        //   }
-        // },
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
         {
           model: User,
-          attributes: ['name']
+          attributes: ['username']
         }
       ]
     })
@@ -34,7 +34,8 @@ router.get("/", async (req, res) => {
 
     res.render("homepage", {
       posts,
-      loggedIn: req.session.loggedIn
+      loggedIn: req.session.loggedIn,
+      username: req.session.username,
     })
   } catch (error) {
     res.status(500).json(error);
@@ -53,6 +54,10 @@ router.get('/login', (req, res) => {
 
 // rendering sign up page 
 router.get('/signup', (req, res) => {
+  if(req.session.loggedIn) {
+    res.redirect('/');
+    return;
+}
   res.render('signup');
 });
 
@@ -70,17 +75,17 @@ router.get("/post/:id", async (req, res) => {
         'created_at'
       ],
       include: [
-        // {
-        //   model: Comment,
-        //   attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-        //   include: {
-        //     model: User,
-        //     attributes: ['username']
-        //   }
-        // },
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
         {
           model: User,
-          attributes: ['name']
+          attributes: ['username']
         }
       ]
     })
@@ -94,7 +99,8 @@ router.get("/post/:id", async (req, res) => {
 
     res.render("single-post", {
       post,
-      loggedIn: req.session.loggedIn
+      loggedIn: req.session.loggedIn,
+      username: req.session.username,
     })
   } catch (error) {
     res.status(500).json(error);
