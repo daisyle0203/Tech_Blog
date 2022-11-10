@@ -1,23 +1,31 @@
-   <!-- Signup Form -->
-      <div class="card mb-3">
-        <div class="card-header text-primary fw-bold fs-5">SignUp</div>
-        <div class="card-body">
-          <form>
-            <div class="mb-3">
-              <label for="validationServerUsername" class="form-label"
-                >Username</label
-              >
-              <input type="text" class="form-control" />
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label"
-                >Password</label
-              >
-              <input type="password" class="form-control" />
-            </div>
-          </form>
-          <button type="submit" class="btn btn-primary mb-3">SignUp!</button>
-        </div>
+<!-- Signup Form -->
+<div class="card mb-3">
+  <div class="card-header text-primary fw-bold fs-5">SignUp</div>
+  <div class="card-body">
+    <form class="signup-form">
+      <div class="mb-3">
+        <label
+          for="username-signup"
+          class="form-label"
+        >Username</label>
+        <input type="text" class="form-control" id="username-signup" />
       </div>
+      <div class="mb-3">
+        <label for="email-signup" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email-signup"
+          placeholder=""
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password-signup" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password-signup"/>
+      </div>
+    </form>
+    <button type="submit" class="btn btn-primary mb-3">SignUp!</button>
+  </div>
+</div>
 
 <script src="./js/signup.js"></script>
