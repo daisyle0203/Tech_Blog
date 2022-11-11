@@ -34,7 +34,7 @@ router.get("/", withAuth, async (req, res) => {
     })
 
     const posts = postData.map((post) => post.get({ plain: true }))
-
+    console.log(posts)
     res.render("dashboard", {
       posts,
       logged_in: true,
@@ -58,24 +58,11 @@ router.get("/edit/:id", withAuth, async (req, res) => {
           model: User,
           attributes: ["username"],
         },
-        {
-          model: Comment,
-          attributes: [
-            "id",
-            "comment_text",
-            "user_id",
-            "post_id",
-            "created_at",
-          ],
-          include: {
-            model: User,
-            attributes: ["username"],
-          },
-        },
       ],
     })
 
     const post = postData.get({ plain: true })
+    console.log(post)
 
     res.render("edit-post", {
       post,

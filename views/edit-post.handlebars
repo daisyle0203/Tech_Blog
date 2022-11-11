@@ -1,27 +1,40 @@
 <!-- Edit Post-->
 <div class="card mb-3">
+  <div class="card-header text-primary fw-bold fs-5">{{post.title}}
+  </div>
+  <div class="card-body">
+    <p>
+      {{post.post_text}}
+    </p>
+  </div>
+</div>
+
+<div class="card mb-3">
   <div class="card-header text-primary fw-bold fs-5">Edit Post</div>
   <div class="card-body">
     <form id="edit-post-form">
       <div class="mb-3">
         <label for="post-title" class="form-label">Title</label>
-        <input type="Username" name="post-title" value="{{post.title}}" class="form-control" />
+        <input
+          type="Username"
+          name="post-title"
+          value="{{post.title}}"
+          class="form-control"
+        />
       </div>
       <div class="mb-3">
         <label for="post-text" class="form-label">Content</label>
-        <textarea
-          class="form-control"
-          name="post-text"
-          id="exampleFormControlTextarea1"
-          value="{{post.content}}"
-          rows="2"
-        ></textarea>
+        <textarea class="form-control" name="post-text" rows="2">
+          {{post.post_text}}
+        </textarea>
       </div>
       <button type="submit" class="btn btn-primary">Update</button>
-      <button type="submit" class="btn btn-primary">Delete</button>
+      <button class="btn btn-primary" id="delete-post-btn">Delete</button>
     </form>
   </div>
 </div>
 
 <script src="/js/edit-post.js"></script>
 <script src="/js/delete-post.js"></script>
+{{!
+<script src="/js/comment.js"></script> }}
