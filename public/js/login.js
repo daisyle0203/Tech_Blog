@@ -3,12 +3,13 @@ async function loginFormHandler(event) {
   
     const username = document.querySelector('#username-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
-  
+    const signupLink = document.querySelector("#signup-link")
+
     if (username && password) {
       const response = await fetch('/api/user/login', {
         method: 'POST',
         body: JSON.stringify({
-          email,
+          username,
           password
         }),
         headers: { 'Content-Type': 'application/json' }
@@ -17,7 +18,7 @@ async function loginFormHandler(event) {
       if (response.ok) {
         document.location.replace('/dashboard');
       } else {
-        alert(response.statusText);
+        signupLink.innerHTML= "Signup instead"
       }
     }
 }

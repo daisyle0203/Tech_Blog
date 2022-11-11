@@ -4,6 +4,7 @@ async function signupFormHandler(event) {
     // getting data from the form
     const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
+    const loginLink = document.querySelector("#login-link")
     const password = document.querySelector('#password-signup').value.trim();
 
     if (username && email && password) {
@@ -20,7 +21,7 @@ async function signupFormHandler(event) {
     if (response.ok) {
         document.location.replace('/dashboard');
       } else {
-        alert(response.statusText);
+        loginLink.innerHTML= "Login instead"
       }
     }
 }
