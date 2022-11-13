@@ -65,10 +65,9 @@ router.post("/", async (req, res) => {
     res.status(400).json(error)
   }
 })
-// POST /api/user, log in for users/ verify users
+// POST /api/user/login, log in for users/ verify users
 // This is where it connects to login.js and fires the fetch('/api/user/login) -> login
 router.post("/login", async (req, res) => {
-  //console.log(req.body, 'I made it here')
   try {
     const userData = await User.findOne({
       where: { username: req.body.username },

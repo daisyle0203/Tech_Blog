@@ -1,13 +1,16 @@
 <!-- Post Form -->
-      <div class="card mb-3">
-        <div class="card-header text-primary fw-bold fs-5">{{title}}
-          <h6 class="text-end">Posted by {{user.username}} on {{format_date created_at}}</h6>
-        </div>
-        <div class="card-body">
-          <p>
-            {{post_text}}
-          </p>
-        </div>
-        <a href="/dashboard/edit/{{id}}">Update your post</a>
-      </div>
-      
+<div class="card mb-3">
+  <div class="card-header text-primary fw-bold fs-5">{{title}}
+    <h6 class="text-end">Posted by
+      {{user.username}}
+      on
+      {{format_date created_at}}</h6>
+  </div>
+  <div class="card-body">
+    <p>
+      {{post_text}}
+    </p>
+  </div>
+  <button class="text-primary"><a style="text-decoration: none" href="/dashboard/edit/{{id}}">Edit your post</a>
+  </button>
+</div>
