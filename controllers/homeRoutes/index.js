@@ -5,7 +5,6 @@ const { Post, User, Comment } = require("../../models")
 
 // rendering all posts on homepage
 router.get("/", async (req, res) => {
-  console.log(req.session)
   try {
     const postData = await Post.findAll({
       attributes: ["id", "title", "post_text", "created_at"],

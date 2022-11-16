@@ -69,7 +69,6 @@ router.get("/edit/:id", withAuth, async (req, res) => {
       username: req.session.username,
     })
   } catch (error) {
-    console.log(err)
     res.status(500).json(error)
   }
 })
